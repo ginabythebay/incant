@@ -56,7 +56,6 @@ func run(ctx *cli.Context) error {
 
 	search := ctx.Args().First()
 
-	var line string
 	var match string
 	var matchCount int
 	scanner := bufio.NewScanner(f)
@@ -64,7 +63,7 @@ func run(ctx *cli.Context) error {
 		if err := scanner.Err(); err != nil {
 			panic(fmt.Sprintf("%+v", err))
 		}
-		line = scanner.Text()
+		line := scanner.Text()
 		if strings.Contains(line, search) {
 			fmt.Println(line)
 			match = line
